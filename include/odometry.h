@@ -13,6 +13,7 @@ bool triangulate(cv::Mat img1, cv::Mat img2, std::vector<cv::Point2f> kp1, std::
 bool monocular_odometry(cv::Mat img, cv::Mat R, cv::Mat t);
 
 private:
+    //todo:思考frame是否该独立一个文件
     cv::Mat last_frame;
     std::vector<cv::Point2f> last_kp;
     std::vector<cv::Point3d> mappoints;

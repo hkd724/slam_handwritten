@@ -22,6 +22,15 @@ bool odometry::monocular_odometry(cv::Mat img, cv::Mat R, cv::Mat t)
     static bool is_initialized = false;
     if(!is_initialized)
     {
+        if(last_frame == NULL)
+        {
+            last_frame = img;
+            return false;
+        }
+        else
+        {
 
+            initialization(last_frame, img,)
+        }
     }
 }
