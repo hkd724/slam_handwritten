@@ -28,6 +28,7 @@ private:
     Eigen::Vector3d t;
     feature ft;
     std::vector<cv::Point3d> mappoints;
+    std::vector<std::vector<float>> descriptor;
     std::map<int, frame> keyframe;
 };
 

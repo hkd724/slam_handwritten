@@ -1,10 +1,17 @@
 #include "odometry.h"
 #include "feature.h"
 #include <opencv2/opencv.hpp>
+#include <fstream>
 
 bool odometry::initialization(frame f1, frame f2);
-{
-    i
+{   
+    if(f1.keypoints.empty())
+    {
+        ft.extractor(f1);
+        ft.descriptor(f1);
+    }
+    ft.extractor(f2);
+    ft.descriptor(f2);
 }
 
 bool odometry::pnp(frame f1, frame f2);
@@ -42,6 +49,8 @@ bool odometry::monocular_odometry(frame f)
             relocalization(f);
         }
     }
+    fstream fs("output.txt",ios::app);
+    fs<<R<<std::endl<<t<<std::endl<<std::endl;
 }
 
 bool odometry::relocalization()

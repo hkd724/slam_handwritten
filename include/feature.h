@@ -3,7 +3,8 @@
 class feature
 {
 public:
-    bool extractor(cv::Mat img, std::vector<feature> keypoints);
+    bool extractor(frame img);
+    bool descriptor(frame img/*, std::vector<cv::Point2f> keypoints*/);
     bool matcher(cv::Mat img1, cv::Mat img2, std::vector<feature> keypoints1, std::vector<feature> keypoints2);
 
     feature(){matcher = 1, feature =1;}
