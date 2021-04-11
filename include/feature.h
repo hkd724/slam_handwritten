@@ -3,14 +3,13 @@
 class feature
 {
 public:
-    extractor(cv::Mat img, std::vector<feature> keypoints);
-    matcher(cv::Mat img1, cv::Mat img2, std::vector<feature> keypoints1, std::vector<feature> keypoints2);
+    bool extractor(cv::Mat img, std::vector<feature> keypoints);
+    bool matcher(cv::Mat img1, cv::Mat img2, std::vector<feature> keypoints1, std::vector<feature> keypoints2);
+
+    feature(){matcher = 1, feature =1;}
+    feature(int matcher_ = 1, int feature_ = 1):matcher(matcher_),feature(feature_){}
     
 private:
-    cv::Point2f location;
-    //todo:写一个模板以适应不同类型（bool、int、float）的描述子
-    std::vector<float> descriptor;
-    double score;
 
     //todo:先写成根据数字（1,2,3,4）选择匹配器,feature类型，后改为网络结构
     int matcher;
