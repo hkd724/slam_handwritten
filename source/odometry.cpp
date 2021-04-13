@@ -5,13 +5,15 @@
 
 bool odometry::initialization(frame f1, frame f2);
 {   
-    if(f1.keypoints.empty())
-    {
-        ft.extractor(f1);
-        ft.descriptor(f1);
-    }
-    ft.extractor(f2);
-    ft.descriptor(f2);
+    std::vector<std::pair<int,int>> matches;
+    //匹配好的kp1,kp2，匹配关系已经一一对应
+    std::vector<cv::Point2f> kp1,kp2;
+
+    ft.frame_keypoint(f1);
+    ft.frame_keypoint(f2);
+    ft.matcher(f1,f2,matches,kp1,kp2);
+
+    cv::findFundmentalMat(kp1,kp2,);
 }
 
 bool odometry::pnp(frame f1, frame f2);
@@ -20,7 +22,7 @@ bool odometry::pnp(frame f1, frame f2);
 }
 
 //todo:建立odometry里面的keypoint容器，只有这个点匹配数量大于k时才可以三角化
-bool odometry::triangulate(std::vector<cv::Point2f> kp1,std::vector<cv::Point2f> kp2, Eigen::Matrix3d R, Eigen::Vector3d t, std::vector<cv::Point3d> mappoints);
+bool odometry::triangulate_2point(std::vector<cv::Point2f> kp1,std::vector<cv::Point2f> kp2, Eigen::Matrix3d R, Eigen::Vector3d t, std::vector<cv::Point3d> mappoints);
 {
 
 }
