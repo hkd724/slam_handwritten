@@ -13,6 +13,7 @@ public:
     bool triangulate_many(std::vector<int> kp_index, std::vector<frame> frames, cv::Point3d mappoint)
     bool monocular_odometry(frame f);
     bool relocalization(frame f);
+    bool read_parameter(std::string file_name);
     
     void R_w2c();
     void R_c2w();
@@ -20,7 +21,7 @@ public:
     void t_c2w();
 
     odometry(){}
-    odometry():(_),(_){}
+    odometry(){}
 
 private:
     //todo:思考frame是否该独立一个文件

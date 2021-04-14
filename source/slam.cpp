@@ -2,7 +2,7 @@
 #include "feature.h" 
 #include "odometry.h" 
 
-bool slam()
+bool slam::slam()
 {
     cv::videocapture cap(0);
 
@@ -24,8 +24,9 @@ bool slam()
             std::cout<<"camera has been stop working"<<std::endl;
             break;
         }
-        frame f(img);
+        frame f(img,mapx,mapy);
         vio.monocular_odometry(f);
         //可视化
     }
+    //todo:写个主函数
 }
