@@ -7,7 +7,6 @@ public:
 
     frame(){}
     frame(cv::Mat img_):img(img_){}
-    frame(cv::Mat img_, cv::Mat mapx, cv::Mat mapy):img(img_){}
     frame(cv::Mat img_, std::vector<feature> keypoint_):img(img_),keypoints(keypoint_){}
     
 private:

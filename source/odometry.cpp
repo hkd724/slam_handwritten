@@ -8,12 +8,17 @@ bool odometry::initialization(frame f1, frame f2);
     std::vector<std::pair<int,int>> matches;
     //匹配好的kp1,kp2，匹配关系已经一一对应
     std::vector<cv::Point2f> kp1,kp2;
+    std::vector<uchar> outliers1,outliers2;
 
     ft.frame_keypoint(f1);
     ft.frame_keypoint(f2);
     ft.matcher(f1,f2,matches,kp1,kp2);
+    undistort_keypoint(kp1)
+    undistort_keypoint(kp2)
 
-    cv::findFundmentalMat(kp1,kp2,);
+    cv::findFundmentalMat(kp1,kp2,CV_FM_RANSAC,3,0.99,outliers1);
+    cv::findHomography(kp1,kp2,RANSAC,3,outliers2,2000,0.995);
+    //统计outliers中0的数量
 }
 
 bool odometry::pnp(frame f1, frame f2);

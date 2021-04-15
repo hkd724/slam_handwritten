@@ -2,7 +2,7 @@
 #include "feature.h" 
 #include "odometry.h" 
 
-bool slam::slam()
+bool slam::run()
 {
     cv::videocapture cap(0);
 

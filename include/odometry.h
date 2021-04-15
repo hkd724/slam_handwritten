@@ -9,10 +9,11 @@ class odometry
 public:
     bool initialization(frame f1, frame f2);
     bool pnp(frame f1, frame f2);
-    bool triangulate_2points(std::vector<cv::Point2f> kp1,std::vector<cv::Point2f> kp2, Eigen::Matrix3d R, Eigen::Vector3d t, std::vector<cv::Point3d> mappoints);
-    bool triangulate_many(std::vector<int> kp_index, std::vector<frame> frames, cv::Point3d mappoint)
+    bool triangulate_2points(std::vector<cv::Point2f> kp1,std::vector<cv::Point2f> kp2, Eigen::Matrix3d R, Eigen::Vector3d t, std::vector<cv::Point3d> &mappoints);
+    bool triangulate_many(std::vector<int> kp_index, std::vector<frame> frames, cv::Point3d &mappoint)
     bool monocular_odometry(frame f);
     bool relocalization(frame f);
+    bool undistort_keypoint(std::vector<cv::Point2f> &kp)
     bool read_parameter(std::string file_name);
     
     void R_w2c();
